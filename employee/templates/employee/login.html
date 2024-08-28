@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    
+</head>
+<body>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <div class="container-login">
+        <div class="row justify-content-center align-items-center vh-100">
+            <div class="col-lg-6 col-md-8 col-sm-10 d-none d-md-block">
+                <img src="{% static 'img/empmgt/logo_light.svg' %}" alt="Login Image" class="img-fluid rounded-start">
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-10 p-5 bg-light rounded-end shadow">
+                <h2 class="text-center mb-4">Login</h2>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <form method="post">
+                    {% csrf_token %}
+                    {% if next %}
+                        <input type="hidden" name="next" value="{{ next }}">
+                    {% endif %}
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% include 'header.html' %}
+{% load custom_filters %}
+{% load static %}
+{% include 'sidebar.html' %}
+<div class="main-panel">        
+    <div class="container">
+        <div class="page-inner">       
+            <main>
+            <h3 class="mb-4">Enter Details</h3>
+            <form method="POST" action="/emp">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{ form.eid.id_for_label }}">Employee Id:</label>
+                {{ form.eid|add_class:"form-control" }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.ename.id_for_label }}">Employee Name:</label>
+                {{ form.ename|add_class:"form-control" }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.eemail.id_for_label }}">Employee Email:</label>
+                {{ form.eemail|add_class:"form-control" }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.econtact.id_for_label }}">Employee Contact:</label>
+                {{ form.econtact|add_class:"form-control" }}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+            </main>
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}
+
